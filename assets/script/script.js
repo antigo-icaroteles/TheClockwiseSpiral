@@ -30,26 +30,27 @@ const handleAddTask = () => {
     deleteItem.classList.add("far");
     deleteItem.classList.add("fa-trash-alt");
 
-    deleteItem.addEventListener('click', () => handleDeleteClick(matrixItemContainer, matrixContent));
+    deleteItem.addEventListener('click', () => handleDeleteClick(matrixItemContainer, matrixContent, matrixHeaderContainer, matrixHeader));
 
     matrixItemContainer.appendChild(matrixContent);
     matrixItemContainer.appendChild(deleteItem);
 
     matrixHeaderContainer.appendChild(matrixHeader);
 
-    matricesContainer.appendChild(matrixHeaderContainer); //O delete não engloba ele! Corrigir!!!!!
+    matricesContainer.appendChild(matrixHeaderContainer);
     matricesContainer.appendChild(matrixItemContainer);
     
     inputElement.value = '';
 }
 
-const handleDeleteClick = (matrixItemContainer, matrixContent) => {
+const handleDeleteClick = (matrixItemContainer, matrixContent, matrixHeaderContainer, matrixHeader) => {
     const matrices = matricesContainer.childNodes;
 
     for(const matrix of matrices){
-        const currentMatrixIsBeingClicked = (matrix.firstChild === matrixContent);
+        const currentMatrixIsBeingClicked = (matrix.firstChild === matrixContent || matrix.firstChild === matrixHeader);
         if (currentMatrixIsBeingClicked){
             matrixItemContainer.remove();
+            matrixHeaderContainer.remove();
         }
     }
 };
