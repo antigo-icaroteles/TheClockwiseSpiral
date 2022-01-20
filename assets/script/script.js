@@ -19,9 +19,12 @@ const handleAddTask = () => {
     const conteudo = createSpiral(N);
     const matrixContent = createTable(conteudo);
 
-    /*const headerMatrix = document.createElement('h2');
-    headerMatrix.classList.add("matrix-h2");
-    headerMatrix.innerText = 'Matriz ' + N + 'x' + N;*/
+    const matrixHeaderContainer = document.createElement('div');
+    matrixHeaderContainer.classList.add("matrix-header");
+
+    const matrixHeader = document.createElement('h2');
+    matrixHeader.classList.add("matrix-header-h2");
+    matrixHeader.innerText = 'Matriz ' + N + 'x' + N;
 
     const deleteItem = document.createElement('i');
     deleteItem.classList.add("far");
@@ -32,6 +35,9 @@ const handleAddTask = () => {
     matrixItemContainer.appendChild(matrixContent);
     matrixItemContainer.appendChild(deleteItem);
 
+    matrixHeaderContainer.appendChild(matrixHeader);
+
+    matricesContainer.appendChild(matrixHeaderContainer); //O delete não engloba ele! Corrigir!!!!!
     matricesContainer.appendChild(matrixItemContainer);
     
     inputElement.value = '';
